@@ -1,0 +1,25 @@
+apiVersion: v2
+name: platform
+description: demo-env platform umbrella chart
+type: application
+version: 0.1.0
+appVersion: "1.0"
+dependencies:
+  - name: platform-namespaces
+    version: 0.1.0
+    condition: platform-namespaces.enabled
+  - name: cluster-rbac
+    version: 0.1.0
+    condition: cluster-rbac.enabled
+  - name: cluster-policies
+    version: 0.1.0
+    condition: cluster-policies.enabled
+  - name: shared-operators
+    version: 0.1.0
+    condition: shared-operators.enabled
+  - name: platform-routing
+    version: 0.1.0
+    condition: platform-routing.enabled
+  - name: tenant-onboarding
+    version: 0.1.0
+    condition: tenant-onboarding.enabled

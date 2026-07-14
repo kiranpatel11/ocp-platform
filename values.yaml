@@ -1,0 +1,21 @@
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+platform-namespaces:
+  enabled: true
+
+cluster-rbac:
+  enabled: true
+
+cluster-policies:
+  enabled: true
+
+shared-operators:
+  enabled: true
+
+platform-routing:
+  enabled: true
+
+tenant-onboarding:
+  enabled: true

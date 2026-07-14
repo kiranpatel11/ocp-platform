@@ -1,0 +1,35 @@
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+tenants:
+  - name: tenant-a
+    quota:
+      requests.cpu: "4"
+      requests.memory: 8Gi
+      limits.cpu: "8"
+      limits.memory: 16Gi
+      pods: "20"
+    limits:
+      default:
+        cpu: 500m
+        memory: 512Mi
+      defaultRequest:
+        cpu: 100m
+        memory: 128Mi
+    denyAllIngress: true
+  - name: tenant-b
+    quota:
+      requests.cpu: "4"
+      requests.memory: 8Gi
+      limits.cpu: "8"
+      limits.memory: 16Gi
+      pods: "20"
+    limits:
+      default:
+        cpu: 500m
+        memory: 512Mi
+      defaultRequest:
+        cpu: 100m
+        memory: 128Mi
+    denyAllIngress: true

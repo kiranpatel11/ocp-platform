@@ -1,0 +1,5 @@
+apiVersion: v2
+name: platform-routing
+description: Ingress and route standards for demo-env
+type: application
+version: 0.1.0

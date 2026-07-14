@@ -1,0 +1,11 @@
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+namespaces:
+  - name: platform-shared
+    labels:
+      platform.ocp-gitops.io/role: shared-services
+  - name: platform-ingress
+    labels:
+      platform.ocp-gitops.io/role: ingress

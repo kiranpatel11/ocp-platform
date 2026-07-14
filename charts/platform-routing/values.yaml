@@ -1,0 +1,7 @@
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+ingressNamespace: platform-ingress
+wildcardDomain: apps.demo-env.example
+tlsSecretName: demo-env-wildcard-tls

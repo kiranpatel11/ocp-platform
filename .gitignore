@@ -1,0 +1,12 @@
+# Helm
+**/charts/*.tgz
+charts/*.tgz
+
+# Local temp
+/tmp/
+*.swp
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

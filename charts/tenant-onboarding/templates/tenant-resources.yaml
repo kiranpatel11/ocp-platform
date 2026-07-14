@@ -1,0 +1,67 @@
+{{- range .Values.tenants }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .namespace }}
+  labels:
+    {{- include "tenant-onboarding.labels" $ | nindent 4 }}
+    platform.ocp-gitops.io/tenant: {{ .name }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .ownerGroup }}-admin
+  namespace: {{ .namespace }}
+  labels:
+    {{- include "tenant-onboarding.labels" $ | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: {{ .ownerGroup }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ .project }}
+  namespace: {{ $.Values.argocdNamespace }}
+  labels:
+    {{- include "tenant-onboarding.labels" $ | nindent 4 }}
+    platform.ocp-gitops.io/tenant: {{ .name }}
+spec:
+  description: Tenant project for {{ .name }} on demo-env
+  sourceRepos:
+    - {{ .repoURL | quote }}
+  sourceNamespaces:
+    - {{ .namespace }}
+  destinations:
+    - namespace: {{ .namespace }}
+      server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  clusterResourceWhitelist: []
+  roles:
+    - name: owner
+      description: Tenant owner read/sync access
+      policies:
+        - p, proj:{{ .project }}:owner, applications, get, {{ .project }}/*, allow
+        - p, proj:{{ .project }}:owner, applications, sync, {{ .project }}/*, allow
+      groups:
+        - {{ .ownerGroup }}
+---
+apiVersion: argoproj.io/v1beta1
+kind: NamespaceManagement
+metadata:
+  name: {{ .name }}-gitops
+  namespace: {{ .namespace }}
+  labels:
+    {{- include "tenant-onboarding.labels" $ | nindent 4 }}
+    platform.ocp-gitops.io/tenant: {{ .name }}
+spec:
+  managedBy: {{ $.Values.argocdNamespace }}
+{{- end }}

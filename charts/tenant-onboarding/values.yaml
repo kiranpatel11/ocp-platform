@@ -1,0 +1,21 @@
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+argocdNamespace: openshift-gitops
+
+tenants:
+  - name: tenant-a
+    namespace: tenant-a
+    ownerGroup: tenant-a-owners
+    repoURL: git@github.com:YOUR_GITHUB_ORG/tenant-a-apps.git
+    targetRevision: main
+    path: deploy
+    project: tenant-a
+  - name: tenant-b
+    namespace: tenant-b
+    ownerGroup: tenant-b-owners
+    repoURL: git@github.com:YOUR_GITHUB_ORG/tenant-b-apps.git
+    targetRevision: main
+    path: deploy
+    project: tenant-b

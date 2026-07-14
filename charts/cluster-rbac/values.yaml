@@ -1,0 +1,18 @@
+# Cluster-scoped RBAC managed by GitOps after bootstrap
+
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+# Ongoing cluster-admin binding (mirrors Ansible bootstrap)
+clusterAdminGroup: cluster-admins
+
+platformAdminGroup: platform-admins
+
+tenantBindings:
+  - namespace: tenant-a
+    group: tenant-a-owners
+    role: admin
+  - namespace: tenant-b
+    group: tenant-b-owners
+    role: admin

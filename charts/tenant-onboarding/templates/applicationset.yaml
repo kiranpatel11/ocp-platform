@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: demo-env-tenants
+  namespace: {{ .Values.argocdNamespace }}
+  labels:
+    {{- include "tenant-onboarding.labels" . | nindent 4 }}
+spec:
+  generators:
+    - list:
+        elements:
+          {{- range .Values.tenants }}
+          - tenant: {{ .name }}
+            namespace: {{ .namespace }}
+            repoURL: {{ .repoURL | quote }}
+            targetRevision: {{ .targetRevision }}
+            path: {{ .path }}
+            project: {{ .project }}
+          {{- end }}
+  template:
+    metadata:
+      name: "demo-env-{{`{{tenant}}`}}"
+      labels:
+        app.kubernetes.io/managed-by: ocp-platform
+        platform.ocp-gitops.io/cluster: demo-env
+        platform.ocp-gitops.io/tenant: "{{`{{tenant}}`}}"
+    spec:
+      project: "{{`{{project}}`}}"
+      source:
+        repoURL: "{{`{{repoURL}}`}}"
+        targetRevision: "{{`{{targetRevision}}`}}"
+        path: "{{`{{path}}`}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{`{{namespace}}`}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=false

@@ -1,0 +1,18 @@
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+operatorNamespace: platform-shared
+operators:
+  - name: cert-manager
+    package: cert-manager
+    channel: stable-v1
+    source: community-operators
+    sourceNamespace: openshift-marketplace
+    enabled: true
+  - name: external-secrets
+    package: external-secrets-operator
+    channel: stable
+    source: community-operators
+    sourceNamespace: openshift-marketplace
+    enabled: false

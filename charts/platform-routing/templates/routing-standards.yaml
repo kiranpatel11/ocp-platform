@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-env-routing-standards
+  namespace: {{ .Values.ingressNamespace }}
+  labels:
+    {{- include "platform-routing.labels" . | nindent 4 }}
+data:
+  wildcardDomain: {{ .Values.wildcardDomain | quote }}
+  tlsSecretName: {{ .Values.tlsSecretName | quote }}
+  routePattern: "https://{app}.{{ .Values.wildcardDomain }}"
+  notes: |
+    Platform teams provision wildcard TLS via cert-manager or cluster ingress operator.
+    Tenants create Routes in their namespaces using the documented subdomain pattern.

@@ -1,0 +1,21 @@
+dependencies:
+- name: platform-namespaces
+  repository: ""
+  version: 0.1.0
+- name: cluster-rbac
+  repository: ""
+  version: 0.1.0
+- name: cluster-policies
+  repository: ""
+  version: 0.1.0
+- name: shared-operators
+  repository: ""
+  version: 0.1.0
+- name: platform-routing
+  repository: ""
+  version: 0.1.0
+- name: tenant-onboarding
+  repository: ""
+  version: 0.1.0
+digest: sha256:9ac93bcfbf011441dbf2b580dfacafd8d88d7c083c287d5f2be247aa80d2abae
+generated: "2026-06-30T16:00:52.773247+10:00"

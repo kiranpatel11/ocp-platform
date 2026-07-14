@@ -1,0 +1,5 @@
+apiVersion: v2
+name: shared-operators
+description: Shared operators for demo-env platform
+type: application
+version: 0.1.0
