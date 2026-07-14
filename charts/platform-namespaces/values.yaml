@@ -9,3 +9,7 @@ namespaces:
   - name: platform-ingress
     labels:
       platform.ocp-gitops.io/role: ingress
+  - name: redis-enterprise
+    labels:
+      app.kubernetes.io/part-of: redis-enterprise
+      platform.ocp-gitops.io/role: operators

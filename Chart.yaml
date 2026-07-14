@@ -17,6 +17,9 @@ dependencies:
   - name: shared-operators
     version: 0.1.0
     condition: shared-operators.enabled
+  - name: redis-enterprise
+    version: 0.1.0
+    condition: redis-enterprise.enabled
   - name: platform-routing
     version: 0.1.0
     condition: platform-routing.enabled

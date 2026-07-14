@@ -5,11 +5,11 @@ global:
 tenants:
   - name: tenant-a
     quota:
-      requests.cpu: "4"
-      requests.memory: 8Gi
-      limits.cpu: "8"
-      limits.memory: 16Gi
-      pods: "20"
+      requests.cpu: "6"
+      requests.memory: 16Gi
+      limits.cpu: "12"
+      limits.memory: 32Gi
+      pods: "30"
     limits:
       default:
         cpu: 500m
@@ -18,13 +18,14 @@ tenants:
         cpu: 100m
         memory: 128Mi
     denyAllIngress: true
+    redisNetworkPolicy: true
   - name: tenant-b
     quota:
-      requests.cpu: "4"
-      requests.memory: 8Gi
-      limits.cpu: "8"
-      limits.memory: 16Gi
-      pods: "20"
+      requests.cpu: "6"
+      requests.memory: 16Gi
+      limits.cpu: "12"
+      limits.memory: 32Gi
+      pods: "30"
     limits:
       default:
         cpu: 500m
@@ -33,3 +34,4 @@ tenants:
         cpu: 100m
         memory: 128Mi
     denyAllIngress: true
+    redisNetworkPolicy: true

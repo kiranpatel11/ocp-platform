@@ -11,11 +11,14 @@ dependencies:
 - name: shared-operators
   repository: ""
   version: 0.1.0
+- name: redis-enterprise
+  repository: ""
+  version: 0.1.0
 - name: platform-routing
   repository: ""
   version: 0.1.0
 - name: tenant-onboarding
   repository: ""
   version: 0.1.0
-digest: sha256:9ac93bcfbf011441dbf2b580dfacafd8d88d7c083c287d5f2be247aa80d2abae
-generated: "2026-06-30T16:00:52.773247+10:00"
+digest: sha256:5ce9002422a9eaa7e4c576fee71412ff9197f7ff86c349c33b1542f4f2d4b61a
+generated: "2026-07-14T17:41:23.329222+10:00"

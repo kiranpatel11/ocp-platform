@@ -7,6 +7,7 @@ metadata:
   labels:
     {{- include "tenant-onboarding.labels" $ | nindent 4 }}
     platform.ocp-gitops.io/tenant: {{ .name }}
+    app.kubernetes.io/part-of: redis-enterprise
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

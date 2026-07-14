@@ -1,0 +1,19 @@
+global:
+  clusterName: demo-env
+  managedBy: ocp-platform
+
+operatorNamespace: redis-enterprise
+operatorGroupName: redis-enterprise-operator
+
+subscription:
+  name: redis-enterprise-operator-cert
+  package: redis-enterprise-operator-cert
+  channel: production
+  source: certified-operators
+  sourceNamespace: openshift-marketplace
+  installPlanApproval: Automatic
+
+targetNamespaces:
+  - redis-enterprise
+  - tenant-a
+  - tenant-b

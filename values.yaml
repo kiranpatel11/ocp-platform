@@ -14,6 +14,9 @@ cluster-policies:
 shared-operators:
   enabled: true
 
+redis-enterprise:
+  enabled: true
+
 platform-routing:
   enabled: true
 

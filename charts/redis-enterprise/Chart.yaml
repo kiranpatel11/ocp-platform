@@ -1,0 +1,5 @@
+apiVersion: v2
+name: redis-enterprise
+description: Certified Redis Enterprise operator for demo-env platform
+type: application
+version: 0.1.0

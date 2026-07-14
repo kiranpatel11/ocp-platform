@@ -1,0 +1,13 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: {{ .Values.subscription.name }}
+  namespace: {{ .Values.operatorNamespace }}
+  labels:
+    {{- include "redis-enterprise.labels" . | nindent 4 }}
+spec:
+  channel: {{ .Values.subscription.channel | quote }}
+  installPlanApproval: {{ .Values.subscription.installPlanApproval | quote }}
+  name: {{ .Values.subscription.package | quote }}
+  source: {{ .Values.subscription.source | quote }}
+  sourceNamespace: {{ .Values.subscription.sourceNamespace | quote }}
